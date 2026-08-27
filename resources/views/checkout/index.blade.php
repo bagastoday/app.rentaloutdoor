@@ -1,50 +1,52 @@
 @extends('layouts.app')
-@section('title', 'Konfirmasi Pemesanan')
+@section('title', 'Konfirmasi Pemesanan — Outdoora')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 py-10 sm:py-14">
+<div class="max-w-4xl mx-auto px-6 py-12 sm:py-16">
 
     {{-- Step indicator --}}
-    <div class="flex items-center justify-center gap-2 mb-10 text-xs font-medium">
-        <span class="flex items-center gap-2 text-[#2563EB]">
-            <span class="w-6 h-6 rounded-full bg-[#2563EB] text-white flex items-center justify-center">1</span> Data Penyewa
+    <div class="flex items-center justify-center gap-3 mb-10 text-xs font-bold">
+        <span class="flex items-center gap-2 text-emerald-600">
+            <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-sm">1</span> Data Penyewa
         </span>
-        <span class="w-8 h-px bg-slate-200"></span>
+        <span class="w-10 h-0.5 bg-slate-200"></span>
         <span class="flex items-center gap-2 text-slate-400">
-            <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center">2</span> Pembayaran
+            <span class="w-7 h-7 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center">2</span> Pembayaran
         </span>
-        <span class="w-8 h-px bg-slate-200"></span>
+        <span class="w-10 h-0.5 bg-slate-200"></span>
         <span class="flex items-center gap-2 text-slate-400">
-            <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center">3</span> Selesai
+            <span class="w-7 h-7 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center">3</span> Selesai
         </span>
     </div>
 
-    <div class="grid md:grid-cols-5 gap-6">
+    <div class="grid md:grid-cols-5 gap-8">
         {{-- Ringkasan pesanan --}}
         <div class="md:col-span-2">
-            <div class="bg-gradient-to-br from-[#0F2C5C] to-[#1D4ED8] rounded-2xl p-6 text-white shadow-lg shadow-blue-900/10 sticky top-24">
-                <p class="text-xs text-blue-200 uppercase tracking-wide mb-1">Ringkasan Pesanan</p>
-                <h2 class="font-bold text-lg">{{ $item->name }}</h2>
-                <p class="text-blue-200 text-sm mt-1">{{ $qty }} unit</p>
-
-                <div class="border-t border-white/20 my-4"></div>
-
-                <div class="flex items-center gap-2 text-sm text-blue-100">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                    {{ \Carbon\Carbon::parse($start_date)->translatedFormat('d M Y') }} — {{ \Carbon\Carbon::parse($end_date)->translatedFormat('d M Y') }}
+            <div class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 rounded-3xl p-6 text-white shadow-xl sticky top-24 space-y-4">
+                <p class="text-xs text-emerald-400 uppercase tracking-widest font-bold">Ringkasan Pesanan</p>
+                <div>
+                    <h2 class="font-extrabold text-xl">{{ $item->name }}</h2>
+                    <p class="text-emerald-300 text-xs mt-1 font-semibold">{{ $qty }} unit alat</p>
                 </div>
 
-                <div class="mt-6 bg-white/10 rounded-xl p-3 text-xs text-blue-100 flex items-start gap-2">
-                    <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    Jaminan cukup KTP/SIM/STNK fisik saat ambil barang — tanpa upload dokumen apapun.
+                <div class="border-t border-slate-800 my-4"></div>
+
+                <div class="flex items-center gap-2 text-xs text-slate-300 font-medium">
+                    <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span>{{ \Carbon\Carbon::parse($start_date)->translatedFormat('d M Y') }} — {{ \Carbon\Carbon::parse($end_date)->translatedFormat('d M Y') }}</span>
+                </div>
+
+                <div class="bg-emerald-950/60 border border-emerald-500/30 rounded-2xl p-4 text-xs text-emerald-300 flex items-start gap-2.5">
+                    <span class="text-emerald-400 text-base shrink-0">💡</span>
+                    <p class="leading-relaxed">Jaminan KTP/SIM/STNK asli diserahkan fisik langsung saat pengambilan alat di toko.</p>
                 </div>
             </div>
         </div>
 
         {{-- Form data penyewa --}}
         <div class="md:col-span-3">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                <h1 class="text-lg font-bold text-[#0F2C5C] mb-4">Data Penyewa</h1>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 space-y-6">
+                <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">Lengkapi Data Penyewa</h1>
 
                 <form method="POST" action="{{ route('checkout.store') }}" class="space-y-4">
                     @csrf
@@ -54,36 +56,39 @@
                     <input type="hidden" name="end_date" value="{{ $end_date }}">
 
                     @auth('customer')
-                        <div class="text-xs bg-blue-50 border border-blue-100 rounded-xl p-3 text-blue-700 flex items-center gap-2">
-                            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            Masuk sebagai <strong>{{ auth('customer')->user()->name }}</strong>. Data di bawah otomatis terisi.
+                        <div class="text-xs bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-emerald-800 flex items-center gap-2 font-medium">
+                            <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px]">✓</span>
+                            Masuk sebagai <strong>{{ auth('customer')->user()->name }}</strong>. Data di bawah terisi otomatis.
                         </div>
                     @endauth
 
                     <div>
-                        <label class="text-sm font-medium text-slate-600">Nama Lengkap</label>
-                        <input type="text" name="customer_name" required value="{{ old('customer_name', auth('customer')->user()->name ?? '') }}" class="w-full rounded-xl border-slate-200 text-sm mt-1 focus:ring-2 focus:ring-[#2563EB] focus:border-transparent">
+                        <label class="text-xs font-bold text-slate-700 block mb-1.5">Nama Lengkap</label>
+                        <input type="text" name="customer_name" required value="{{ old('customer_name', auth('customer')->user()->name ?? '') }}"
+                               class="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl text-xs px-4 py-3 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 font-medium">
                     </div>
                     <div>
-                        <label class="text-sm font-medium text-slate-600">No. WhatsApp</label>
-                        <input type="text" name="customer_phone" required value="{{ old('customer_phone', auth('customer')->user()->phone ?? '') }}" class="w-full rounded-xl border-slate-200 text-sm mt-1 focus:ring-2 focus:ring-[#2563EB] focus:border-transparent">
+                        <label class="text-xs font-bold text-slate-700 block mb-1.5">No. WhatsApp</label>
+                        <input type="text" name="customer_phone" required value="{{ old('customer_phone', auth('customer')->user()->phone ?? '') }}"
+                               class="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl text-xs px-4 py-3 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 font-medium">
                     </div>
                     <div>
-                        <label class="text-sm font-medium text-slate-600">Email (opsional)</label>
-                        <input type="email" name="customer_email" value="{{ old('customer_email', auth('customer')->user()->email ?? '') }}" class="w-full rounded-xl border-slate-200 text-sm mt-1 focus:ring-2 focus:ring-[#2563EB] focus:border-transparent">
+                        <label class="text-xs font-bold text-slate-700 block mb-1.5">Email (opsional)</label>
+                        <input type="email" name="customer_email" value="{{ old('customer_email', auth('customer')->user()->email ?? '') }}"
+                               class="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl text-xs px-4 py-3 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 font-medium">
                     </div>
 
                     @guest('customer')
-                        <p class="text-xs text-slate-400">
-                            Sudah punya akun? <a href="{{ route('customer.login') }}" class="text-[#2563EB] underline">Masuk dulu</a> biar riwayat sewa ini tersimpan otomatis.
+                        <p class="text-xs text-slate-500 font-medium">
+                            Sudah punya akun? <a href="{{ route('customer.login') }}" class="text-emerald-600 font-bold hover:underline">Masuk dulu</a> agar riwayat sewa ini otomatis tersimpan.
                         </p>
                     @endguest
 
                     @if ($errors->any())
-                        <div class="text-red-500 text-xs bg-red-50 rounded-lg p-2">{{ $errors->first() }}</div>
+                        <div class="text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl p-3 font-medium">{{ $errors->first() }}</div>
                     @endif
 
-                    <button class="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl py-3 text-sm font-semibold transition">
+                    <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-full py-4 text-xs font-bold transition shadow-md shadow-emerald-600/20 uppercase tracking-wider">
                         Lanjut ke Pembayaran →
                     </button>
                 </form>
