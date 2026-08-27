@@ -1,0 +1,125 @@
+/* ===== Google Font Import ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== CSS Custom Properties ===== */
+:root {
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1d2e;
+    --bg-card: #1e2130;
+    --bg-card-hover: #252836;
+    --accent-orange: #e8842a;
+    --accent-orange-hover: #d4741e;
+    --accent-green: #22c55e;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --border-color: #2d3148;
+}
+
+/* ===== Base Styles ===== */
+body {
+    font-family: 'Inter', 'Figtree', system-ui, sans-serif;
+    background-color: #0f1117;
+    color: #f3f4f6;
+}
+
+/* ===== Date Picker Fix ===== */
+input[type="date"] {
+    color-scheme: dark !important;
+    position: relative;
+    padding-right: 2.5rem !important;
+    background-color: #12141d !important;
+    color: #ffffff !important;
+    border-color: #2b3044 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) sepia(100%) saturate(300%) hue-rotate(350deg);
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--bg-card-hover);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3a3f55;
+}
+
+/* ===== Category Pills Scrollbar ===== */
+.pills-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+.pills-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+.pills-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+}
+
+/* ===== Smooth transitions ===== */
+.card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Hero Section ===== */
+.hero-gradient {
+    background: linear-gradient(135deg, rgba(15, 17, 23, 0.92) 0%, rgba(26, 29, 46, 0.8) 50%, rgba(15, 17, 23, 0.6) 100%);
+}
+
+/* ===== Pulse animation for badge ===== */
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+.badge-pulse {
+    animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* ===== Dark form inputs ===== */
+.dark-input {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+.dark-input:focus {
+    border-color: var(--accent-orange) !important;
+    --tw-ring-color: var(--accent-orange) !important;
+}
+.dark-input::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* ===== Feature card icon animation ===== */
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}

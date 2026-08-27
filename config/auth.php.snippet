@@ -1,0 +1,48 @@
+// ==========================================================
+// TAMBAHKAN / UBAH bagian berikut di config/auth.php (bawaan Laravel)
+// Ini menambahkan guard & provider terpisah khusus customer,
+// jadi tidak bentrok dengan sistem login admin (Breeze) yang sudah ada.
+// ==========================================================
+
+// Di dalam array 'guards', tambahkan 'customer':
+'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
+    ],
+
+    'customer' => [
+        'driver' => 'session',
+        'provider' => 'customers',
+    ],
+],
+
+// Di dalam array 'providers', tambahkan 'customers':
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+    ],
+
+    'customers' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Customer::class,
+    ],
+],
+
+// Di dalam array 'passwords', tambahkan (opsional, untuk fitur lupa password nanti):
+'passwords' => [
+    'users' => [
+        'provider' => 'users',
+        'table' => 'password_reset_tokens',
+        'expire' => 60,
+        'throttle' => 60,
+    ],
+
+    'customers' => [
+        'provider' => 'customers',
+        'table' => 'password_reset_tokens',
+        'expire' => 60,
+        'throttle' => 60,
+    ],
+],
