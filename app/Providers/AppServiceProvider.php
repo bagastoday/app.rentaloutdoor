@@ -22,5 +22,9 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production') || env('APP_ENV') === 'production') {
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
+
+        if (env('ASSET_URL') === null) {
+            config(['app.asset_url' => '/']);
+        }
     }
 }
